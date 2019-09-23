@@ -9,34 +9,6 @@ namespace components;
 class Server
 {
     /**
-     * Возвращает данные из поста или весь массив
-     * @param null $key
-     * @return mixed|null
-     */
-    public static function post($key = null)
-    {
-        if ($key) {
-            return isset($_POST[$key]) ? $_POST[$key] : null;
-        }
-
-        return $_POST;
-    }
-
-    /**
-     * Возвращает данные из гет или весь массив
-     * @param null $key
-     * @return mixed|null
-     */
-    public static function get($key = null)
-    {
-        if ($key) {
-            return isset($_GET[$key]) ? $_GET[$key] : null;
-        }
-
-        return $_GET;
-    }
-
-    /**
      * Возвращает запрос
      * @return string|null
      */
@@ -65,5 +37,23 @@ class Server
     public static function isAjax()
     {
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
+    }
+
+    /**
+     * Возвращает адрес откуда пришли
+     * @return mixed|string
+     */
+    public static function getReferer()
+    {
+        return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/';
+    }
+
+    /**
+     * Возвращает путь к корню проекта
+     * @return mixed
+     */
+    public static function getRootPath()
+    {
+        return $_SERVER['DOCUMENT_ROOT'];
     }
 }

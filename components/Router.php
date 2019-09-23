@@ -2,8 +2,15 @@
 
 namespace components;
 
+/**
+ * Class Router
+ */
 class Router
 {
+    /**
+     * Запускает маршрутизацию
+     * @return bool
+     */
     public static function start()
     {
         $uri = Server::getUri();
@@ -18,10 +25,6 @@ class Router
 
         if (class_exists($className)) {
             $controller = new $className();
-
-            if (!method_exists($controller, $actionName) && $actionName == 'action') {
-                $actionName = 'action' . ucfirst($controller->defaultAction);
-            }
 
             if (method_exists($controller, $actionName)) {
                 call_user_func_array([$controller, $actionName], $segments);
