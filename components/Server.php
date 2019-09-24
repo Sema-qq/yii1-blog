@@ -6,7 +6,7 @@ namespace components;
 /**
  * Class Server
  */
-class Server
+final class Server
 {
     /**
      * Возвращает запрос

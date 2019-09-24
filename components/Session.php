@@ -6,7 +6,7 @@ namespace components;
 /**
  * Class Session
  */
-class Session
+final class Session
 {
     /**
      * Запускает сессию

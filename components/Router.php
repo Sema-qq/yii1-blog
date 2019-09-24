@@ -2,10 +2,12 @@
 
 namespace components;
 
+use controllers\ErrorController;
+
 /**
  * Class Router
  */
-class Router
+final class Router
 {
     /**
      * Запускает маршрутизацию
@@ -32,6 +34,8 @@ class Router
             }
         }
 
+        $controller = new ErrorController();
+        $controller->actionError(404);
         return false;
     }
 }

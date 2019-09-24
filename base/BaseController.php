@@ -3,7 +3,9 @@
 
 namespace base;
 
-
+/**
+ * Class BaseController
+ */
 abstract class BaseController
 {
     private $view;
@@ -26,7 +28,16 @@ abstract class BaseController
         return header("Location: {$view}");
     }
 
-    private function getContent()
+    public function getContent()
+    {
+        ob_start();
+
+        $this->getData();
+
+        return ob_get_clean();
+    }
+
+    private function getData()
     {
         extract($this->data);
 
@@ -38,14 +49,5 @@ abstract class BaseController
     private function getViewMini()
     {
         echo $this->getContent();
-    }
-
-    public function getContent2()
-    {
-        ob_start();
-
-        $this->getContent();
-
-        return ob_get_clean();
     }
 }

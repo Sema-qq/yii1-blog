@@ -6,7 +6,7 @@ namespace components;
 /**
  * Class File
  */
-class File
+final class File
 {
     /**
      * Возвращает данные из массива или весь массив

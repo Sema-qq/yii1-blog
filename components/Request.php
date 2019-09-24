@@ -6,7 +6,7 @@ namespace components;
 /**
  * Class Request
  */
-class Request
+final class Request
 {
     /**
      * Возвращает данные из поста или весь массив

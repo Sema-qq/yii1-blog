@@ -1,2 +1,2 @@
 <?php
-echo '123';
+dump($test);
