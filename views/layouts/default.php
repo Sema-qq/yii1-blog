@@ -25,10 +25,10 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
                 <?php if (\components\User::isGuest()): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/auth/signup">Зарегистрироваться</a>
+                        <a class="nav-link" href="/auth/register">Зарегистрироваться</a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">

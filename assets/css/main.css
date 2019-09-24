@@ -22,3 +22,7 @@ small.text-error {
 table.detail-view {
     text-align: left;
 }
+
+#navbarsExampleDefault {
+    justify-content: flex-end;
+}

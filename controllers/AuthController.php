@@ -13,8 +13,8 @@ class AuthController extends BaseController
         return $this->view('login', ['test' => 'test']);
     }
 
-    public function actionRegistration()
+    public function actionRegister()
     {
-        return $this->view('registration', []);
+        return $this->view('register', []);
     }
 }
