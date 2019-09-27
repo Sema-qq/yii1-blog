@@ -37,3 +37,23 @@ div.min-error {
     box-shadow: black 0px 0px 15px;
     font-size: 50px;
 }
+
+div.contact-photo {
+    height: 200px;
+}
+
+a.contact-show:hover {
+    background-color: #b1dfbb;
+}
+
+a.contact-edit:hover {
+    background-color: #9fcdff;
+}
+
+a.contact-delete:hover {
+    background-color: #f5c6cb;
+}
+
+div.card-body div.btn-group {
+    margin: 0 auto;
+}

@@ -15,9 +15,9 @@ abstract class BaseDbObject extends BaseModel
     private $where = [];
     private $sort;
 
-    abstract function tableName();
+    abstract public function tableName();
 
-    abstract function primaryKey();
+    abstract public function primaryKey();
 
     public static function getDb()
     {
@@ -67,6 +67,7 @@ abstract class BaseDbObject extends BaseModel
     public function sort(array $sort)
     {
         $this->sort = $sort;
+        return $this;
     }
 
     public function insert(array $fieldNames)

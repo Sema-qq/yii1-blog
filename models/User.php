@@ -77,6 +77,7 @@ class User extends BaseDbObject
     public function registration()
     {
         if ($this->validate()) {
+            $this->password = $this->getPassword();
             if ($this->insert(['login', 'password'])) {
                 BigUser::login($this);
                 return true;

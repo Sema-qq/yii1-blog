@@ -10,7 +10,7 @@ abstract class BaseModel
 {
     private $errors;
 
-    abstract function validate();
+    abstract public function validate();
 
     abstract public function labels();
 

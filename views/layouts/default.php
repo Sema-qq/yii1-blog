@@ -9,7 +9,7 @@
     <script src="/assets/js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
 </head>
-<body>
+<body class="bg-light">
 <div class="wrap">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <?php if (!\components\User::isGuest()): ?>
