@@ -22,14 +22,9 @@ class ContactController extends BaseController
             ->where(['user_id' => User::currentUser()->id])
             ->all();
 
-        $sort = $sort && $sort == 'ASC' ? 'DESC' : 'ASC';
-
-        $arrow = $sort == 'ASC' ? '&#11014;' : '&#11015;';
-
         return $this->view('index', [
             'contacts' => $contacts,
-            'arrow' => $arrow,
-            'sort' => $sort
+            'sort' => $sort && $sort == 'ASC' ? 'DESC' : 'ASC'
         ]);
     }
 
