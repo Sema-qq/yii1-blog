@@ -14,7 +14,9 @@ final class Server
      */
     public static function getUri()
     {
-        if (!empty($_SERVER['REQUEST_URI'])) {
+        $uri = $_SERVER['REQUEST_URI'];
+
+        if (!empty($uri) && $uri != '/') {
             return strtok(trim($_SERVER['REQUEST_URI'], '/'), '?');
         }
 

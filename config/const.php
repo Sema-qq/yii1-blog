@@ -6,4 +6,4 @@ define('BASE_EXT', '.php');
 
 define('VIEW_PATH', ROOT_DIR . '/views/');
 
-define('DEFAULT_LAYOUT', ROOT_DIR . '/views/layouts/default.php');
+define('LAYOUT_DIR', ROOT_DIR . '/views/layouts/');

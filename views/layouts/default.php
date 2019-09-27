@@ -12,6 +12,9 @@
 <body>
 <div class="wrap">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <?php if (!\components\User::isGuest()): ?>
+            <a class="navbar-brand" href="/contact/index">Телефонная книга</a>
+        <?php endif; ?>
         <button
             class="navbar-toggler"
             type="button"
@@ -28,12 +31,12 @@
             <ul class="navbar-nav">
                 <?php if (\components\User::isGuest()): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/auth/register">Зарегистрироваться</a>
+                        <a class="nav-link" href="/auth/login">Войти</a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/auth/logout">
-                            Выйти(<?= \components\User::getName() ?>)
+                            Выйти(<?= \components\User::currentUser()->login ?>)
                         </a>
                     </li>
                 <?php endif; ?>

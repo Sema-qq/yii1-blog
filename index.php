@@ -1,5 +1,7 @@
 <?php
 try {
+    ini_set('display_errors', 1);
+
     require_once __DIR__ . '/config/const.php';
 
     /** Автозагрузчик */
@@ -14,7 +16,11 @@ try {
     \components\Session::start();
     \components\Router::start();
 } catch (Exception $e) {
-    dump($e->getMessage());  //пока так
+    echo '<div class="alert alert-warning text-left" role="alert">';
+    echo '<pre>';
+        var_export($e->getMessage());
+    echo "\n";
+    echo '</div>';
 }
 
 
@@ -38,6 +44,6 @@ function dump($var)
 function dd($var)
 {
     echo '<pre>';
-    var_export($var);
+    var_dump($var);
     die;
 }

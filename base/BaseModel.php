@@ -12,39 +12,43 @@ abstract class BaseModel
 
     abstract function validate();
 
+    abstract public function labels();
+
     public function load($array)
     {
-        foreach ($array as $attribute => $value) {
-            if (property_exists($this, $attribute)) {
-                $this->$attribute = $value;
+        foreach ($array as $key => $value) {
+            if (property_exists($this, $key)) {
+                $this->$key = $value;
             }
         }
     }
 
-    public function attributeLabels()
+    public function getLabel($key)
     {
-        return [];
-    }
+        $label = $key;
 
-    public function getAttributeLabel($attribute)
-    {
-        $label = $attribute;
+        $labels = (array)$this->labels();
 
-        if (isset($this->attributeLabels()[$attribute]) || array_key_exists($attribute, $this->attributeLabels())) {
-            $label = $this->attributeLabels()[$attribute];
+        if (isset($labels[$key]) || array_key_exists($key, $labels)) {
+            $label = $labels[$key];
         }
 
         return $label;
     }
 
-    public function setError($attribute, $message)
+    public function hasErrors()
     {
-        $this->errors[$attribute] = $message;
+        return (bool)$this->errors;
     }
 
-    public function getError($attribute)
+    public function setError($key, $message)
     {
-        return isset($this->errors[$attribute]) ? $this->errors[$attribute] : null;
+        $this->errors[$key] = is_array($message) ? implode('. ', $message) : $message;
+    }
+
+    public function getError($key)
+    {
+        return isset($this->errors[$key]) ? $this->errors[$key] : null;
     }
 
     public function getErrors()

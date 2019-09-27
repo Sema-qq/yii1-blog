@@ -10,7 +10,7 @@ final class User
 {
     public static function isGuest()
     {
-        return Session::get('user') ? true : false;
+        return Session::get('user') ? false : true;
     }
 
     public static function login($user)
@@ -23,9 +23,8 @@ final class User
         Session::set('user', null);
     }
 
-    public static function getName()
+    public static function currentUser()
     {
-        $user = Session::get('user');
-        return 'Батя';
+        return Session::get('user');
     }
 }

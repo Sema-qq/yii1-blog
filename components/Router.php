@@ -17,6 +17,10 @@ final class Router
     {
         $uri = Server::getUri();
 
+        if ($uri == '/') {
+            $uri = 'auth/login';
+        }
+
         $segments = explode('/', $uri);
 
         $controllerName = ucfirst(array_shift($segments) . 'Controller');

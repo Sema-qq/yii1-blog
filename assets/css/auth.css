@@ -1,0 +1,19 @@
+body {
+    background-color: #f5f5f5;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-label-group {
+    text-align: left;
+}
+
+.form-label-group label {
+    margin-top: 10px;
+    cursor: pointer;
+}

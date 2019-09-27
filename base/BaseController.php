@@ -8,6 +8,8 @@ namespace base;
  */
 abstract class BaseController
 {
+    public $layout = 'default';
+
     private $view;
     private $data;
 
@@ -20,12 +22,7 @@ abstract class BaseController
             return $this->getViewMini();
         }
 
-        return require DEFAULT_LAYOUT;
-    }
-
-    public function redirect($view)
-    {
-        return header("Location: {$view}");
+        return require LAYOUT_DIR . $this->layout . BASE_EXT;
     }
 
     public function getContent()
@@ -35,6 +32,11 @@ abstract class BaseController
         $this->getData();
 
         return ob_get_clean();
+    }
+
+    public static function redirect($view)
+    {
+        return header("Location: {$view}");
     }
 
     private function getData()

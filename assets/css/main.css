@@ -26,3 +26,14 @@ table.detail-view {
 #navbarsExampleDefault {
     justify-content: flex-end;
 }
+
+div.error {
+    font-size: 200px;
+    box-shadow: black 0px 0px 15px;
+}
+
+div.min-error {
+    margin-top: 10px;
+    box-shadow: black 0px 0px 15px;
+    font-size: 50px;
+}
