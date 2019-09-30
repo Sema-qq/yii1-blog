@@ -1,22 +1,14 @@
 <?php
 
-namespace extensions;
+namespace models;
 
 
 class Converter
 {
-    /** @var array Цифры */
     private $numbers = [];
-    /** @var array Порядки */
     private $orders = [];
-    /** @var array Карта */
     private $map = [];
 
-    /**
-     * Конвертирует число в строку
-     * @param string $string
-     * @return string
-     */
     public static function convert($string)
     {
         $number = preg_replace('/[^0-9]/', '', $string);
@@ -34,7 +26,6 @@ class Converter
         return $model->run($number);
     }
 
-    /** Наполняет свойства для удобства */
     public function __construct()
     {
         $this->numbers = $this->getDictionaryNumbers();
@@ -42,11 +33,6 @@ class Converter
         $this->map = $this->getMap();
     }
 
-    /**
-     * Выполняет основной код конвертации
-     * @param int $number
-     * @return string
-     */
     private function run($number)
     {
         $result = [];
@@ -88,21 +74,12 @@ class Converter
         return implode(' ', $result);
     }
 
-    /**
-     * Разбивает число в массив
-     * @param int $number
-     * @return array
-     */
     private function getParts($number)
     {
         $prepareNumber = str_pad($number, ceil(strlen($number) / 3) * 3, 0, STR_PAD_LEFT);
         return array_reverse(str_split($prepareNumber, 3));
     }
 
-    /**
-     * Возвращает массив цифр соответствий
-     * @return array
-     */
     private function getDictionaryNumbers()
     {
         return [
@@ -147,10 +124,6 @@ class Converter
         ];
     }
 
-    /**
-     * Возвращает массив порядков со склонениями
-     * @return array
-     */
     private function getDictionaryOrders()
     {
         return [
@@ -163,10 +136,6 @@ class Converter
         ];
     }
 
-    /**
-     * Возвращает массив карту
-     * @return array
-     */
     private function getMap()
     {
         return [2, 0, 1, 1, 1, 2];

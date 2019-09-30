@@ -1,6 +1,6 @@
 <?php
 
-namespace extensions;
+namespace models;
 
 use base\BaseModel;
 use SplFileInfo;

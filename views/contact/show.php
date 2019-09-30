@@ -23,4 +23,4 @@
     </tr>
 </table>
 <hr>
-<div class="text-left"><?= '<b>Телефон прописью:</b> ' . \extensions\Converter::convert($contact->phone) . '.' ?></div>
+<div class="text-left"><?= '<b>Телефон прописью:</b> ' . \models\Converter::convert($contact->phone) . '.' ?></div>

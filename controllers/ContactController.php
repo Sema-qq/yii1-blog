@@ -10,8 +10,8 @@ use components\Request;
 use components\Server;
 use components\Session;
 use components\User;
-use extensions\FileUploader;
 use models\Contact;
+use models\FileUploader;
 
 class ContactController extends BaseController
 {
