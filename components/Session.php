@@ -35,4 +35,15 @@ final class Session
     {
         $_SESSION[$key] = $value;
     }
+
+    /**
+     * Удаляет данные из сессии
+     * @param $key
+     */
+    public static function delete($key)
+    {
+        if (isset($_SESSION[$key])) {
+            unset($_SESSION[$key]);
+        }
+    }
 }

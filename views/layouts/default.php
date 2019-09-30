@@ -8,6 +8,7 @@
     <link href="/assets/css/main.css" rel="stylesheet">
     <script src="/assets/js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/js/main.js" type="text/javascript"></script>
 </head>
 <body class="bg-light">
 <div class="wrap">

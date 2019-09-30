@@ -1,5 +1,7 @@
 FROM php:5.5-fpm
 
+WORKDIR /var/www
+
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install pdo_mysql
 
@@ -18,3 +20,5 @@ RUN docker-php-ext-configure gd \
     --with-jpeg-dir=/usr/include
 
 RUN docker-php-ext-install gd
+
+RUN chmod -R 777 /var/www

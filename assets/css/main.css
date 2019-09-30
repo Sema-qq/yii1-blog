@@ -29,31 +29,52 @@ table.detail-view {
 
 div.error {
     font-size: 200px;
-    box-shadow: black 0px 0px 15px;
+    box-shadow: black 0 0 15px;
 }
 
 div.min-error {
     margin-top: 10px;
-    box-shadow: black 0px 0px 15px;
+    box-shadow: black 0 0 15px;
     font-size: 50px;
 }
 
 div.contact-photo {
     height: 200px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 15px;
 }
 
-a.contact-show:hover {
+div.btn-group a.contact-show:hover {
     background-color: #b1dfbb;
 }
 
-a.contact-edit:hover {
+div.btn-group a.contact-edit:hover {
     background-color: #9fcdff;
 }
 
-a.contact-delete:hover {
+div.btn-group a.contact-delete:hover {
     background-color: #f5c6cb;
 }
 
 div.card-body div.btn-group {
     margin: 0 auto;
+}
+
+.form-group label {
+    cursor: pointer;
+}
+
+input.custom-file-input {
+    cursor: pointer;
+}
+
+img.contact-photo {
+    max-height: 200px;
+    max-width: 100%;
+}
+
+a.btn-default:hover {
+    background-color: white;
 }

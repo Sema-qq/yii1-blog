@@ -4,13 +4,14 @@
     </div>
 </section>
 <div class="container text-left">
-    <a href="/contact/create" class="btn btn-primary">Добавить</a>
+    <a href="/contact/create" class="btn btn-primary">Добавить контакт</a>
     <a
         href="/contact/index?sort=<?= $sort ?>"
         class="btn btn-default"
         style="border: 1px solid;"
-    >Сортировать <?= $arrow ?></a>
+    >Сортировать <?= $sort == 'ASC' ? '&#11014;' : '&#11015;' ?></a>
 </div>
+<?php $this->view('error', ['contact' => new \models\Contact()], true) ?>
 <div class="album py-5">
     <div class="container">
         <div class="row">
@@ -19,25 +20,24 @@
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
                             <div class="contact-photo">
-                                <?php if ($contact->photoExists()): ?>
-
-                                <?php endif; ?>
+                                <img  class="contact-photo" src="<?= $contact->getPhoto() ?>">
                             </div>
                             <div class="card-body">
-                                <p class="card-text"><?= $contact->name . $contact->last_name ?></p>
+                                <p class="card-text"><?= $contact->name . ' ' . $contact->last_name ?></p>
+                                <p class="card-text"><?= $contact->phone ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a
                                             href="/contact/show/<?= $contact->id ?>"
-                                            class="btn btn-sm btn-outline-secondary contact-show"
+                                            class="btn btn-sm btn-success contact-show"
                                         >Просмотр</a>
                                         <a
                                             href="/contact/edit/<?= $contact->id ?>"
-                                            class="btn btn-sm btn-outline-secondary contact-edit"
+                                            class="btn btn-sm btn-primary contact-edit"
                                         >Изменить</a>
                                         <a
                                             href="/contact/delete/<?= $contact->id ?>"
-                                            class="btn btn-sm btn-outline-secondary contact-delete"
+                                            class="btn btn-sm btn-danger contact-delete"
                                         >Удалить</a>
                                     </div>
                                 </div>

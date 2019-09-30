@@ -5,13 +5,25 @@ namespace controllers;
 
 
 use base\BaseController;
+use components\File;
 use components\Request;
 use components\Server;
+use components\Session;
 use components\User;
+use extensions\FileUploader;
 use models\Contact;
 
 class ContactController extends BaseController
 {
+    public function view($view, $data = [], $mini = false)
+    {
+        if (Server::isAjax()) {
+            $mini = true;
+        }
+
+        return parent::view($view, $data, $mini);
+    }
+
     public function actionIndex()
     {
         $sort = Request::get('sort');
@@ -74,11 +86,49 @@ class ContactController extends BaseController
 
     public function actionDelete($id)
     {
-        if (Server::isPost()) {
-            $contact = Contact::getContact($id);
-            $contact->deleteById($id);
+        $contact = Contact::getContact($id);
+
+        if (!$contact->delete()) {
+            if ($contact->hasErrors()) {
+                Session::set(Contact::ERROR_SESSION_KEY, $contact->getErrors());
+            }
+
+            return self::redirect(Server::getReferer());
         }
 
         return self::redirect('/contact/index');
+    }
+
+    public function actionPhoto($id)
+    {
+        $contact = Contact::getContact($id);
+
+        $uploader = new FileUploader(['png', 'jpg']);
+
+        if (Server::isPost() && ($file = File::files('file'))) {
+            $uploader->load($file);
+
+            if ($filename = $uploader->upload()) {
+                if ($contact->photoSave($filename)) {
+                    return self::redirect('/contact/show/' . $contact->id);
+                }
+            }
+        }
+
+        return $this->view('photo', [
+            'contact' => $contact,
+            'uploader' => $uploader
+        ]);
+    }
+
+    public function actionDeletePhoto($id)
+    {
+        $contact = Contact::getContact($id);
+
+        if (!$contact->deleteCurrentPhoto() && $contact->hasErrors()) {
+            Session::set(Contact::ERROR_SESSION_KEY, $contact->getErrors());
+        }
+
+        return self::redirect('/contact/show/' . $contact->id);
     }
 }
