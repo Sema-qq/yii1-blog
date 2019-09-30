@@ -8,13 +8,14 @@
     </div>
 
     <div class="form-label-group">
-        <label for="login"><?= $user->getLabel('login') ?></label>
+        <label for="login"><?= $user->getLabel('login') ?><span class="required">*</span></label>
         <input
             type="text"
             name="login"
+            id="login"
             class="form-control"
             placeholder="<?= $user->getLabel('login') ?>"
-            required=""
+            required
             autofocus=""
             value="<?= $user->login ?>"
             maxlength="15"
@@ -22,15 +23,29 @@
     </div>
 
     <div class="form-label-group">
-        <label for="password"><?= $user->getLabel('password') ?></label>
+        <label for="password"><?= $user->getLabel('password') ?><span class="required">*</span></label>
         <input
             type="password"
             name="password"
+            id="password"
             class="form-control"
             placeholder="<?= $user->getLabel('password') ?>"
-            required=""
+            required
             value="<?= $user->password ?>"
             maxlength="15"
+        >
+    </div>
+    <div class="form-label-group">
+        <label for="captcha"><?= $user->getLabel('captcha') ?><span class="required">*</span></label>
+        <br><img src="/auth/captcha" class="captcha form-control"><br>
+        <input
+                type="text"
+                name="captcha"
+                id="captcha"
+                class="form-control"
+                placeholder="<?= $user->getLabel('captcha') ?>"
+                required
+                maxlength="15"
         >
     </div>
     <br>

@@ -5,6 +5,7 @@ namespace models;
 
 
 use base\BaseDbObject;
+use components\Session;
 use components\User as BigUser;
 
 /**
@@ -16,6 +17,7 @@ class User extends BaseDbObject
     public $login;
     public $password;
     public $repeatPassword;
+    public $captcha;
 
     public function tableName()
     {
@@ -51,6 +53,10 @@ class User extends BaseDbObject
             $this->setError($this->getLabel('repeatPassword'), 'Должен совпадать с паролем.');
         }
 
+        if ($this->captcha !== Session::get('captcha')) {
+            $this->setError('captcha', 'Код с картинки не совпадает с введенным.');
+        }
+
         return !$this->hasErrors();
     }
 
@@ -59,18 +65,26 @@ class User extends BaseDbObject
         return [
             'login' => 'Логин',
             'password' => 'Пароль',
-            'repeatPassword' => 'Повтор пароля'
+            'repeatPassword' => 'Повтор пароля',
+            'captcha' => 'Проверочный код'
         ];
     }
 
     public function login()
     {
-        if ($user = self::model()->find()->where(['login' => $this->login, 'password' => $this->getPassword()])->one()) {
+        if (!($user = self::model()->find()->where(['login' => $this->login, 'password' => $this->getPassword()])->one())) {
+            $this->setError('Ошибка', 'Неправильно введены "Имя пользователя" или "Пароль".');
+        }
+
+        if ($this->captcha !== Session::get('captcha')) {
+            $this->setError('captcha', 'Код с картинки не совпадает с введенным.');
+        }
+
+        if (!$this->hasErrors()) {
             BigUser::login($user);
             return true;
         }
 
-        $this->setError('Ошибка', 'Неправильно введены "Имя пользователя" или "Пароль".');
         return false;
     }
 

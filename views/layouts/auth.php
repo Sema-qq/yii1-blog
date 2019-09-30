@@ -9,6 +9,7 @@
     <link href="/assets/css/auth.css" rel="stylesheet">
     <script src="/assets/js/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/js/auth.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="wrap text-center">

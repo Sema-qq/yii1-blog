@@ -11,3 +11,5 @@ define('LAYOUT_DIR', ROOT_DIR . '/views/layouts/');
 define('IMG_DIR', ROOT_DIR . '/web/img/');
 
 define('UPLOAD_DIR', ROOT_DIR . '/web/uploads/');
+
+define('FONT_DIR', ROOT_DIR . '/assets/fonts/');
